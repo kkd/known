@@ -629,7 +629,7 @@ namespace Idno\Common {
                     }
                 }
                 //\Idno\Core\Idno::site()->logging()->debug("Setting resilient slug");
-                //
+                // Generate slug from date and time when title has multi-byte language.
                 if (strlen($title) == mb_strlen($title, 'utf8')) {
                     $this->setSlugResilient($title);
                 } else {
