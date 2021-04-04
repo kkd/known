@@ -629,7 +629,12 @@ namespace Idno\Common {
                     }
                 }
                 //\Idno\Core\Idno::site()->logging()->debug("Setting resilient slug");
-                $this->setSlugResilient($title);
+                //
+                if (strlen($title) == mb_strlen($title, 'utf8')) {
+                    $this->setSlugResilient($title);
+                } else {
+                    $this->setSlug(date('mdGis'));
+                }
                 //\Idno\Core\Idno::site()->logging()->debug("Set resilient slug");
             } else {
                 //\Idno\Core\Idno::site()->logging()->debug("Had slug: " . $this->getSlug());
