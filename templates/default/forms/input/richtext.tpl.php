@@ -61,6 +61,9 @@ if (!empty($vars['label'])) {
         $(container).tinymce({
             selector: 'textarea',
             statusbar: false,
+            contextmenu: 'underline strikethrough image table lists',
+            contextmenu_never_use_native: true,
+
             <?php if (!empty($vars['wordcount'])) {
                 ?>statusbar: true, <?php
             } else {
@@ -72,8 +75,13 @@ if (!empty($vars['label'])) {
             min_height: <?php echo $height?>,
             resize: true,
             toolbar: 'styleselect | bold italic | link image | blockquote bullist numlist | alignleft aligncenter alignright | code',
-            plugins: 'code link image autoresize <?php if (!empty($vars['wordcount'])) { echo " wordcount";
-                                                 } ?>',
+            plugins: [
+                'quickbars hr pagebreak',
+                'code link image autoresize <?php if (!empty($vars['wordcount'])) { echo " wordcount";
+                                                 } ?>'],
+            quickbars_selection_toolbar: 'bold italic | h1 h2 h3 | quicklink blockquote',
+            quickbars_insert_toolbar: 'quickimage quicktable | hr pagebreak',
+
             relative_urls : false,
             remove_script_host : false,
             convert_urls : true,
