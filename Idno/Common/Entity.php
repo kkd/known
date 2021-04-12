@@ -638,11 +638,6 @@ namespace Idno\Common {
                 //\Idno\Core\Idno::site()->logging()->debug("Set resilient slug");
             } else {
                  //\Idno\Core\Idno::site()->logging()->debug("Had slug: " . $this->getSlug());
-                if (strlen($slug) == mb_strlen($slug, 'utf8')) {
-                    $this->setSlugResilient($slug);
-                } else {
-                    $this->setSlug(date('mdGis'));
-                }
             }
 
             // Force users to be public
