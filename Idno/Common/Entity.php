@@ -629,10 +629,15 @@ namespace Idno\Common {
                     }
                 }
                 //\Idno\Core\Idno::site()->logging()->debug("Setting resilient slug");
-                $this->setSlugResilient($title);
+                // Generate slug from date and time when title has multi-byte language.
+                if (strlen($title) == mb_strlen($title, 'utf8')) {
+                    $this->setSlugResilient($title);
+                } else {
+                    $this->setSlug(date('mdGis'));
+                }
                 //\Idno\Core\Idno::site()->logging()->debug("Set resilient slug");
             } else {
-                //\Idno\Core\Idno::site()->logging()->debug("Had slug: " . $this->getSlug());
+                 //\Idno\Core\Idno::site()->logging()->debug("Had slug: " . $this->getSlug());
             }
 
             // Force users to be public
