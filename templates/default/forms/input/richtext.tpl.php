@@ -72,8 +72,9 @@ if (!empty($vars['label'])) {
             min_height: <?php echo $height?>,
             resize: true,
             toolbar: 'styleselect | bold italic | link image | blockquote bullist numlist | alignleft aligncenter alignright | code',
-            plugins: 'code link image autoresize <?php if (!empty($vars['wordcount'])) { echo " wordcount";
+            plugins: 'lists code link image autoresize autosave <?php if (!empty($vars['wordcount'])) { echo " wordcount";
                                                  } ?>',
+            image_caption: true,
             relative_urls : false,
             remove_script_host : false,
             convert_urls : true,
@@ -86,7 +87,7 @@ if (!empty($vars['label'])) {
             mobile: {
                 theme: 'silver',
                 toolbar: 'styleselect | bold italic | link image | blockquote bullist numlist | alignleft aligncenter alignright | code',
-                plugins: 'code link image autoresize <?php if (!empty($vars['wordcount'])) { echo " wordcount";
+                plugins: 'lists code link image autoresize autosave <?php if (!empty($vars['wordcount'])) { echo " wordcount";
                                                      } ?>'
             }
         });
